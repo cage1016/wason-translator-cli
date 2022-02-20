@@ -1,0 +1,42 @@
+@apikey = gNh138hFJpmxt2g88rOF98eKUZ_uouj1l3jf6Dq_qt9d
+@url = https://api.jp-tok.language-translator.watson.cloud.ibm.com/instances/b918b262-fff7-403c-a2b9-0da5757cd906
+
+###
+# @name hello
+POST {{url}}/v3/translate?version=2018-05-01 HTTP/1.1
+Authorization: Basic apikey {{apikey}}
+Content-Type: application/json
+
+{"text": ["Hello, world.", "How are you?"], "model_id":"en-zh-TW"}
+
+###
+# @name list
+GET {{url}}/v3/documents?version=2018-05-01 HTTP/1.1
+Authorization: Basic apikey {{apikey}}
+Content-Type: application/json
+
+###
+# @name translate
+POST {{url}}/v3/documents?version=2018-05-01 HTTP/1.1
+Authorization: Basic apikey {{apikey}}
+Content-Type: multipart/form-data; boundary=abcd
+
+--abcd
+Content-Disposition: form-data; name="source"
+
+ja
+--abcd
+Content-Disposition: form-data; name="target"
+
+zh-TW
+--abcd
+Content-Disposition: form-data; name="file"; filename="Japan - DS8900F e-config構成ガイド_201912.PPTX"
+
+< ./Japan - DS8900F e-config構成ガイド_201912.PPTX
+--abcd--
+
+###
+# @name Download
+GET {{url}}/v3/documents/9170b005-b620-4377-bdff-b45ba83df20b/translated_document?version=2018-05-01 HTTP/1.1
+Authorization: Basic apikey {{apikey}}
+Content-Disposition: attachment; filename="111.pptx"

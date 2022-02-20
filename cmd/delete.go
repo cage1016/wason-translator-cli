@@ -5,9 +5,10 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/cage1016/wason-translate/lib"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // deleteCmd represents the delete command
@@ -15,20 +16,38 @@ var deleteCmd = &cobra.Command{
 	Use:   "delete",
 	Short: "Deletes a document.",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("delete called")
+		createDeletePrompt(cmd, args)
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(deleteCmd)
+}
 
-	// Here you will define your flags and configuration settings.
+func createDeletePrompt(cmd *cobra.Command, args []string) {
+	logrus.Info("Fetching Documents list...")
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// deleteCmd.PersistentFlags().String("foo", "", "A help for foo")
+	res, err := lib.List(lib.ListRequest{
+		Version: viper.GetString("version"),
+		APIKey:  viper.GetString("api_key"),
+		URL:     viper.GetString("url"),
+	})
+	if err != nil {
+		logrus.Errorf("Error Fetching documents: %s", err)
+		return
+	}
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// deleteCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	doc, err := documentsSelect(res, "Select Document you want to Delete")
+	if err != nil {
+		logrus.Fatalf("Error get select document: %s", err)
+	}
+
+	req := &lib.DeleteRequest{
+		Version:    viper.GetString("version"),
+		APIKey:     viper.GetString("api_key"),
+		URL:        viper.GetString("url"),
+		DocumentID: doc.DocumentID,
+	}
+
+	lib.Delete(req)
 }
