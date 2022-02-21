@@ -17,7 +17,7 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "wason-translate",
+	Use:   "document-translator-cli",
 	Short: "Translate Power Point via Wason Translate API",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
@@ -39,7 +39,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.wason-translate.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.document-translator-cli.yaml)")
 	rootCmd.PersistentFlags().StringP("api_key", "", "API KEY", "Wason Translate API KEY")
 	rootCmd.PersistentFlags().StringP("url", "", "URL", "Wason Translate API URL")
 	rootCmd.PersistentFlags().StringP("version", "", "VERSION", "Wason Translate API VERSION")
@@ -65,9 +65,9 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".wason-translate" (without extension).
+		// Search config in home directory with name ".document-translator-cli" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".wason-translate")
+		viper.SetConfigName(".document-translator-cli")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match

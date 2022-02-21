@@ -1,15 +1,15 @@
-# wason translate
+# IMB Cloud Document translator CLI
 
 ## Usage
 
 ```
-$ ./wason-translate
-Using config file: $HOME/.wason-translate.yaml
+$ ./document-translator-cli
+Using config file: $HOME/.document-translator-cli.yaml
 Translate Power Point via Wason Translate API
 
 Usage:
-  wason-translate [flags]
-  wason-translate [command]
+  document-translator-cli [flags]
+  document-translator-cli [command]
 
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
@@ -21,21 +21,25 @@ Available Commands:
 
 Flags:
       --api_key string   Wason Translate API KEY (default "API KEY")
-      --config string    config file (default is $HOME/.wason-translate.yaml)
-  -h, --help             help for wason-translate
+      --config string    config file (default is $HOME/.document-translator-cli.yaml)
+  -h, --help             help for document-translator-cli
   -t, --toggle           Help message for toggle
       --url string       Wason Translate API URL (default "URL")
       --version string   Wason Translate API VERSION (default "VERSION")
 
-Use "wason-translate [command] --help" for more information about a command.
+Use "document-translator-cli [command] --help" for more information about a command.
 ```
 
-1. Prepare `$HOME/.wason-translate.yaml`
+1. Prepare `$HOME/.document-translator-cli.yaml`. Vist [Language Translator - IBM Cloud](https://cloud.ibm.com/catalog/services/language-translator) request `apiKey` & `url`
 
-    ```yaml
-    api_key: "API KEY"
-    url: "URL"
+    ```bash
+    API_KEY=<replace-your-api-key>
+    URL=<replace-url>
+    cat <<EOF >> $HOME/.document-translator-cli.yaml
+    api_key: ${API_KEY}
+    url: ${URL}
     version: 2018-05-01
+    EOF
     ```
 
 2. Translate a file
