@@ -18,7 +18,7 @@ type DownloadRequest struct {
 	OutputFileName string
 }
 
-func Download(req DownloadRequest) {
+func DownloadDocument(req DownloadRequest) {
 	logrus.Infof("Downloading document %s as %s", req.DocumentID, req.OutputFileName)
 
 	authenticator := &core.IamAuthenticator{

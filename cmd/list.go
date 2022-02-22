@@ -1,14 +1,12 @@
 /*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+Copyright © 2022 KAI CHU CHUNG cage.chung@gmail.com
 
 */
 package cmd
 
 import (
-	"github.com/cage1016/document-translator-cli/lib"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 // listCmd represents the list command
@@ -16,7 +14,7 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "Lists documents that have been submitted for translation.",
 	Run: func(cmd *cobra.Command, args []string) {
-		createList(cmd, args)
+		createListPrompt(cmd, args)
 	},
 }
 
@@ -24,22 +22,10 @@ func init() {
 	rootCmd.AddCommand(listCmd)
 }
 
-func createList(cmd *cobra.Command, args []string) {
-	logrus.Info("Fetching Documents list...")
+func createListPrompt(cmd *cobra.Command, args []string) {
+	res := loadList()
 
-	req := lib.ListRequest{
-		Version: viper.GetString("version"),
-		APIKey:  viper.GetString("api_key"),
-		URL:     viper.GetString("url"),
-	}
-
-	res, err := lib.List(req)
-	if err != nil {
-		logrus.Fatalf("Failed to list documents: %s", err)
-		return
-	}
-
-	doc, err := documentsSelect(res, "Dump Choose Item Detail")
+	doc, err := documentsSelect2(res, "Dump Choose Item Detail")
 	if err != nil {
 		logrus.Fatalf("Error get select document: %s", err)
 	}
@@ -50,8 +36,8 @@ func createList(cmd *cobra.Command, args []string) {
 	logrus.Infof("ModelID: %s", doc.ModelID)
 	logrus.Infof("Source: %s", doc.Source)
 	logrus.Infof("Target: %s", doc.Target)
-	logrus.Infof("WordCount: %s", doc.WordCount)
-	logrus.Infof("CharacterCount: %s", doc.CharacterCount)
+	logrus.Infof("WordCount: %d", doc.WordCount)
+	logrus.Infof("CharacterCount: %d", doc.CharacterCount)
 	logrus.Infof("Created: %s", doc.Created)
 	logrus.Infof("Completed: %s", doc.Completed)
 	logrus.Infof("")

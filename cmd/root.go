@@ -1,5 +1,5 @@
 /*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+Copyright © 2022 KAI CHU CHUNG cage.chung@gmail.com
 
 */
 package cmd
@@ -18,7 +18,7 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "document-translator-cli",
-	Short: "Translate Power Point via Wason Translate API",
+	Short: "Translate Document via IBM Cloud Language Translator",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
 	},
@@ -40,9 +40,9 @@ func init() {
 	// will be global for your application.
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.document-translator-cli.yaml)")
-	rootCmd.PersistentFlags().StringP("api_key", "", "API KEY", "Wason Translate API KEY")
-	rootCmd.PersistentFlags().StringP("url", "", "URL", "Wason Translate API URL")
-	rootCmd.PersistentFlags().StringP("version", "", "VERSION", "Wason Translate API VERSION")
+	rootCmd.PersistentFlags().StringP("api_key", "", "API KEY", "IBM Cloud Language Translator API KEY")
+	rootCmd.PersistentFlags().StringP("url", "", "URL", "IBM Cloud Language Translator API URL")
+	rootCmd.PersistentFlags().StringP("version", "", "VERSION", "IBM Cloud Language Translator API VERSION")
 	viper.BindPFlag("api_key", rootCmd.PersistentFlags().Lookup("api_key"))
 	viper.BindPFlag("url", rootCmd.PersistentFlags().Lookup("url"))
 	viper.BindPFlag("version", rootCmd.PersistentFlags().Lookup("version"))

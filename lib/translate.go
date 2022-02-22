@@ -3,6 +3,7 @@ package lib
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
 
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/sirupsen/logrus"
@@ -20,7 +21,7 @@ type TranslateRequest struct {
 	Target string
 }
 
-func Translate(req TranslateRequest) {
+func TranslateDocument(req TranslateRequest) {
 	logrus.Infof("Translate file %s uploading", req.FileName)
 
 	authenticator := &core.IamAuthenticator{
@@ -51,7 +52,7 @@ func Translate(req TranslateRequest) {
 		&languagetranslatorv3.TranslateDocumentOptions{
 			File:            file,
 			FileContentType: core.StringPtr(req.Accept),
-			Filename:        core.StringPtr(req.FileName),
+			Filename:        core.StringPtr(filepath.Base(req.FileName)),
 			// ModelID:         core.StringPtr(req.ModelID),
 			Source: core.StringPtr(req.Source),
 			Target: core.StringPtr(req.Target),

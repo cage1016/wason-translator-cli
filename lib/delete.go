@@ -13,7 +13,7 @@ type DeleteRequest struct {
 	DocumentID string
 }
 
-func Delete(req *DeleteRequest) {
+func DeleteDocument(req *DeleteRequest) {
 	logrus.Info("Deleting Document...")
 
 	authenticator := &core.IamAuthenticator{

@@ -1,5 +1,5 @@
 /*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+Copyright © 2022 KAI CHU CHUNG cage.chung@gmail.com
 
 */
 package cmd
@@ -8,10 +8,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/cage1016/document-translator-cli/lib"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	"github.com/cage1016/document-translator-cli/lib"
 )
 
 // translateCmd represents the translate command
@@ -23,7 +24,7 @@ var translateCmd = &cobra.Command{
 - 20 MB for service instances on the Standard, Advanced, and Premium plans
 - 2 MB for service instances on the Lite plan..`,
 	Run: func(cmd *cobra.Command, args []string) {
-		createTranslate(cmd, args)
+		createTranslatePrompt(cmd, args)
 	},
 }
 
@@ -31,8 +32,27 @@ func init() {
 	rootCmd.AddCommand(translateCmd)
 }
 
-func createTranslate(cmd *cobra.Command, args []string) {
+func createTranslatePrompt(cmd *cobra.Command, args []string) {
+	actions := []action{
+		{"Continue Translate", 0},
+		{"Quit", 1},
+	}
 
+	for {
+		translate()
+
+		i := promptGetActionSelect(actions)
+
+		if actions[i].Value == 0 {
+			continue
+		} else {
+			break
+		}
+	}
+
+}
+
+func translate() {
 	pc := promptContent{
 		errorMsg: "You must provide the filename",
 		label:    "File Name",
@@ -74,7 +94,7 @@ func createTranslate(cmd *cobra.Command, args []string) {
 	// if DocumentID == "" {
 	// }
 
-	lib.Translate(lib.TranslateRequest{
+	lib.TranslateDocument(lib.TranslateRequest{
 		Version:  viper.GetString("version"),
 		APIKey:   viper.GetString("api_key"),
 		URL:      viper.GetString("url"),
