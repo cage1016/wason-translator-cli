@@ -25,6 +25,11 @@ func init() {
 func createListPrompt(cmd *cobra.Command, args []string) {
 	res := loadList()
 
+	if len(res) == 0 {
+		logrus.Info("No documents found")
+		return
+	}
+
 	doc, err := documentsSelect2(res, "Dump Choose Item Detail")
 	if err != nil {
 		logrus.Fatalf("Error get select document: %s", err)

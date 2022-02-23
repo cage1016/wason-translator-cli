@@ -3,11 +3,15 @@ package cmd
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
+	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/manifoldco/promptui"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"golang.org/x/exp/utf8string"
 
 	"github.com/cage1016/document-translator-cli/lib"
 )
@@ -74,11 +78,23 @@ func promptGetSelect(pc promptContent, items []string) string {
 }
 
 func documentsSelect2(docs []lib.Document, label string) (*lib.Document, error) {
+
+	funcMap := promptui.FuncMap
+	funcMap["truncate"] = func(s string, l int) string {
+		a := utf8string.NewString(s)
+		if a.RuneCount() <= l {
+			t := "%-" + strconv.Itoa(l) + "s"
+			return fmt.Sprintf(t, s)
+		}
+		p := (l / 2) - 1
+		return a.Slice(0, p) + "..." + a.Slice(a.RuneCount()-p, a.RuneCount()-1)
+	}
+
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}?",
-		Active:   "\U0001F336 {{ .Filename | cyan }} ({{ .Status | red }})",
-		Inactive: "  {{ .Filename | cyan }} ({{ .Status | red }})",
-		Selected: "\U0001F336 {{ .Filename | red | cyan }}",
+		Active:   "\U0001F336 {{ truncate .Filename 30 | cyan }} {{ truncate (printf \"%s → %s\" .Source .Target) 15 | yellow }} ({{ .Status | red }})",
+		Inactive: "  {{ truncate .Filename 30 | cyan }} {{ truncate (printf \"%s → %s\" .Source .Target) 15 }} ({{ .Status | red }})",
+		Selected: "\U0001F336 {{truncate .Filename 30 | red | cyan }}{{ truncate (printf \"%s → %s\" .Source .Target) 15 | yellow }}",
 		Details: `
 --------- Document ----------
 {{ "DocumentID:" | faint }}	{{ .DocumentID }}
@@ -91,6 +107,7 @@ func documentsSelect2(docs []lib.Document, label string) (*lib.Document, error) 
 {{ "CharacterCount:" | faint }}	{{ .CharacterCount }}
 {{ "Created:" | faint }}	{{ .Created }}
 {{ "Completed:" | faint }}	{{ .Completed }}`,
+		FuncMap: funcMap,
 	}
 
 	searcher := func(input string, index int) bool {
@@ -176,10 +193,9 @@ func loadList() []lib.Document {
 		return []lib.Document{}
 	}
 
-	// a := buf.Documents
-	// sort.SliceIsSorted(a, func(i, j int) bool {
-	// 	return a[i].Created.UnixNano() < a[j].Created.UnixNano()
-	// })
+	sort.SliceStable(buf.Documents, func(i, j int) bool {
+		return buf.Documents[i].Created.UnixNano() > buf.Documents[j].Created.UnixNano()
+	})
 
 	return buf.Documents
 }

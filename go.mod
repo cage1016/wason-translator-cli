@@ -39,6 +39,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
 	go.mongodb.org/mongo-driver v1.7.5 // indirect
+	golang.org/x/exp v0.0.0-20220218215828-6cf2b201936e // indirect
 	golang.org/x/sys v0.0.0-20211210111614-af8b64212486 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
