@@ -17,6 +17,11 @@ jobs:
           name: 'document-translator-cli'
           compress: 'false'
           dest: 'dist'
+    - name: sha256sum
+      run: |
+        for FILE in dist/*; 
+          do sha256sum $FILE > ${FILE:4}.sha256; 
+        done
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
@@ -25,4 +30,5 @@ jobs:
           dist/document-translator-cli-linux-amd64
           dist/document-translator-cli-linux-arm64
           dist/document-translator-cli-darwin-amd64
-          dist/document-translator-cli-windows-amd64
+          dist/document-translator-cli-windows-amd64.exe
+          *.sha256
