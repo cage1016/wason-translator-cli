@@ -20,7 +20,7 @@ jobs:
     - name: sha256sum
       run: |
         for FILE in dist/*; 
-          do sha256sum $FILE > ${FILE:4}.sha256; 
+          do sha256sum $FILE > .${FILE:4}.sha256; 
         done
     - name: Release
       uses: softprops/action-gh-release@v1
