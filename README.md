@@ -44,12 +44,12 @@ Use "document-translator-cli [command] --help" for more information about a comm
 
 2. Translate a file
 
-    [![asciicast](https://asciinema.org/a/470659.svg)](https://asciinema.org/a/470659)
+    [![asciicast](https://asciinema.org/a/471109.svg)](https://asciinema.org/a/471109)
 
 3. Download the translated file
 
-    [![asciicast](https://asciinema.org/a/470658.svg)](https://asciinema.org/a/470658)
+    [![asciicast](https://asciinema.org/a/471108.svg)](https://asciinema.org/a/471108)
 
 4. Delete the translated file
 
-    [![asciicast](https://asciinema.org/a/hBzXiWXwux6aYlBRVP3YuYqKj.svg)](https://asciinema.org/a/hBzXiWXwux6aYlBRVP3YuYqKj)
+    [![asciicast](https://asciinema.org/a/471107.svg)](https://asciinema.org/a/471107)
