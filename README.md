@@ -57,3 +57,9 @@ Use "document-translator-cli [command] --help" for more information about a comm
 4. Delete the translated file
 
     [![asciicast](https://asciinema.org/a/471107.svg)](https://asciinema.org/a/471107)
+
+## Contribute
+If you find any bug or want to propose a new feature, please open an issue to discuss it.
+
+## License
+This repository contains free software released under the MIT Licence. Please check out the [LICENSE](./LICENSE) file for details.    
