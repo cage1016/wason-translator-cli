@@ -1,6 +1,10 @@
 # IMB Cloud Document translator CLI
 
+[![Release](https://github.com/cage1016/document-translator-cli/actions/workflows/release.yml/badge.svg)](https://github.com/cage1016/document-translator-cli/actions/workflows/release.yml)![GitHub release (latest by date)](https://img.shields.io/github/v/release/cage1016/document-translator-cli)
+
 ## Usage
+
+Visti [releases](https://github.com/cage1016/document-translator-cli/releases) to download latest version
 
 ```
 $ ./document-translator-cli
