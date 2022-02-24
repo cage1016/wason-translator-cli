@@ -36,6 +36,8 @@ Use "document-translator-cli [command] --help" for more information about a comm
 
 1. Prepare `$HOME/.document-translator-cli.yaml`. Vist [Language Translator - IBM Cloud](https://cloud.ibm.com/catalog/services/language-translator) request `apiKey` & `url`
 
+    ![](lite.jpg)
+
     ```bash
     API_KEY=<replace-your-api-key>
     URL=<replace-url>
@@ -47,6 +49,8 @@ Use "document-translator-cli [command] --help" for more information about a comm
     ```
 
 2. Translate a file
+
+    `.doc`, `.docx`, `.ppt`, `.pptx`, `.xls`, `.xlsx`, `.rtf`, `.odt`, `.odp`, `.ods`, `.pdf`, `.htm`, `.html`, `.xml`, `.json`, `.txt`
 
     [![asciicast](https://asciinema.org/a/471109.svg)](https://asciinema.org/a/471109)
 
