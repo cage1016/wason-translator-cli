@@ -94,7 +94,7 @@ func documentsSelect2(docs []lib.Document, label string) (*lib.Document, error) 
 		Label:    "{{ . }}?",
 		Active:   "\U0001F336 {{ truncate .Filename 30 | cyan }} {{ truncate (printf \"%s → %s\" .Source .Target) 15 | yellow }} ({{ .Status | red }})",
 		Inactive: "  {{ truncate .Filename 30 | cyan }} {{ truncate (printf \"%s → %s\" .Source .Target) 15 }} ({{ .Status | red }})",
-		Selected: "\U0001F336 {{truncate .Filename 30 | red | cyan }}{{ truncate (printf \"%s → %s\" .Source .Target) 15 | yellow }}",
+		Selected: "\U0001F336 {{truncate .Filename 30 | red | cyan }} {{ truncate (printf \"%s → %s\" .Source .Target) 15 | yellow }}",
 		Details: `
 --------- Document ----------
 {{ "DocumentID:" | faint }}	{{ .DocumentID }}

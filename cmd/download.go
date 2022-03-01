@@ -5,6 +5,7 @@ Copyright © 2022 KAI CHU CHUNG cage.chung@gmail.com
 package cmd
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -26,6 +27,10 @@ var downloadCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(downloadCmd)
+}
+
+func fileNameWithoutExtSliceNotation(fileName string) string {
+	return fileName[:len(fileName)-len(filepath.Ext(fileName))]
 }
 
 func createDownloadPrompt(cmd *cobra.Command, args []string) {
@@ -56,7 +61,7 @@ func createDownloadPrompt(cmd *cobra.Command, args []string) {
 				label:    "Output fileName",
 			}
 
-			outputFileName := promptGetInput(pc, doc.Filename)
+			outputFileName := promptGetInput(pc, fmt.Sprintf("%s_%s_translations%s", fileNameWithoutExtSliceNotation(doc.Filename), doc.Target, ext))
 			if outputFileName == "" {
 				return
 			}
