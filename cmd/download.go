@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/cage1016/document-translator-cli/lib"
+	"github.com/cage1016/wason-translator-cli/lib"
 )
 
 // downloadCmd represents the download command

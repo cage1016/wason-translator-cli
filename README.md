@@ -1,19 +1,19 @@
 # IMB Cloud Document translator CLI
 
-[![Release](https://github.com/cage1016/document-translator-cli/actions/workflows/release.yml/badge.svg)](https://github.com/cage1016/document-translator-cli/actions/workflows/release.yml)![GitHub release (latest by date)](https://img.shields.io/github/v/release/cage1016/document-translator-cli)
+[![Release](https://github.com/cage1016/wason-translator-cli/actions/workflows/release.yml/badge.svg)](https://github.com/cage1016/wason-translator-cli/actions/workflows/release.yml)![GitHub release (latest by date)](https://img.shields.io/github/v/release/cage1016/wason-translator-cli)
 
 ## Usage
 
-Visti [releases](https://github.com/cage1016/document-translator-cli/releases) to download latest version
+Visti [releases](https://github.com/cage1016/wason-translator-cli/releases) to download latest version
 
 ```
-$ ./document-translator-cli
-Using config file: /Users/kaichuchung/.document-translator-cli.yaml
+$ ./wason-translator-cli
+Using config file: /Users/kaichuchung/.wason-translator-cli.yaml
 Translate Document via IBM Cloud Language Translator
 
 Usage:
-  document-translator-cli [flags]
-  document-translator-cli [command]
+  wason-translator-cli [flags]
+  wason-translator-cli [command]
 
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
@@ -25,23 +25,23 @@ Available Commands:
 
 Flags:
       --api_key string   IBM Cloud Language Translator API KEY (default "API KEY")
-      --config string    config file (default is $HOME/.document-translator-cli.yaml)
-  -h, --help             help for document-translator-cli
+      --config string    config file (default is $HOME/.wason-translator-cli.yaml)
+  -h, --help             help for wason-translator-cli
   -t, --toggle           Help message for toggle
       --url string       IBM Cloud Language Translator API URL (default "URL")
       --version string   IBM Cloud Language Translator API VERSION (default "VERSION")
 
-Use "document-translator-cli [command] --help" for more information about a command.
+Use "wason-translator-cli [command] --help" for more information about a command.
 ```
 
-1. Prepare `$HOME/.document-translator-cli.yaml`. Vist [Language Translator - IBM Cloud](https://cloud.ibm.com/catalog/services/language-translator) request `apiKey` & `url`
+1. Prepare `$HOME/.wason-translator-cli.yaml`. Vist [Language Translator - IBM Cloud](https://cloud.ibm.com/catalog/services/language-translator) request `apiKey` & `url`
 
     ![](lite.jpg)
 
     ```bash
     API_KEY=<replace-your-api-key>
     URL=<replace-url>
-    cat <<EOF >> $HOME/.document-translator-cli.yaml
+    cat <<EOF >> $HOME/.wason-translator-cli.yaml
     api_key: ${API_KEY}
     url: ${URL}
     version: 2018-05-01

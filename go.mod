@@ -1,4 +1,4 @@
-module github.com/cage1016/document-translator-cli
+module github.com/cage1016/wason-translator-cli
 
 go 1.17
 

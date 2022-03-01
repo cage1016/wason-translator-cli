@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/viper"
 	"golang.org/x/exp/utf8string"
 
-	"github.com/cage1016/document-translator-cli/lib"
+	"github.com/cage1016/wason-translator-cli/lib"
 )
 
 type promptContent struct {
