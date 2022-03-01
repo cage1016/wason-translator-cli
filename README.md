@@ -52,15 +52,15 @@ Use "wason-translator-cli [command] --help" for more information about a command
 
     `.doc`, `.docx`, `.ppt`, `.pptx`, `.xls`, `.xlsx`, `.rtf`, `.odt`, `.odp`, `.ods`, `.pdf`, `.htm`, `.html`, `.xml`, `.json`, `.txt`
 
-    [![asciicast](https://asciinema.org/a/471109.svg)](https://asciinema.org/a/471109)
+    [![asciicast](https://asciinema.org/a/472912.svg)](https://asciinema.org/a/472912)
 
 3. Download the translated file
 
-    [![asciicast](https://asciinema.org/a/471108.svg)](https://asciinema.org/a/471108)
+    [![asciicast](https://asciinema.org/a/472913.svg)](https://asciinema.org/a/472913)
 
 4. Delete the translated file
 
-    [![asciicast](https://asciinema.org/a/471107.svg)](https://asciinema.org/a/471107)
+    [![asciicast](https://asciinema.org/a/472914.svg)](https://asciinema.org/a/472914)
 
 ## Contribute
 If you find any bug or want to propose a new feature, please open an issue to discuss it.
